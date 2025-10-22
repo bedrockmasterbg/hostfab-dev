@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pihole
+  namespace: pihole
+  annotations:
+    cert-manager.io/cluster-issuer: hostfab-dev
+    kubernetes.io/ingress.class: nginx
+  labels:
+    app: pihole
+    env: home
+spec:
+  tls:
+  - hosts:
+    - pihole.hostfabtech.xyz
+    secretName: tls-pihole-hostfabtech-xyz
+  rules:
+  - host: pihole.hostfabtech.xyz
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: pihole-web
+            port:
+              number: 80
