@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-apps-hostfab
+  name: argocd-apps
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -15,7 +15,7 @@ spec:
     directory:
       recurse: true
   destination:
-    server: https://87.243.107.94:6443
+    server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:

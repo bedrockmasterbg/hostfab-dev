@@ -1,0 +1,11 @@
+controller:
+  replicaCount: 1
+  hostNetwork: true
+  allowSnippetAnnotations: true
+
+  service:
+    externalTrafficPolicy: Local
+
+  config:
+    use-forwarded-headers: "true"
+    enable-real-ip: "true"

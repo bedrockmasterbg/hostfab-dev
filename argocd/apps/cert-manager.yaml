@@ -2,26 +2,32 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: metallb
+  name: cert-manager
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   annotations:
     env: home
 spec:
-  project: hostfab-dev
+  project: home
   sources:
-  - repoURL: https://metallb.github.io/metallb
-    targetRevision: 0.14.9
-    chart: metallb
+  - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git 
+    targetRevision: main
+    ref: values
+  - repoURL: https://charts.jetstack.io
+    targetRevision: 1.17.0
+    chart: cert-manager
+    helm:
+      valueFiles:
+      - '$values/helm/cert-manager/values.yaml'
   - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
     targetRevision: main
-    path: manifests/metallb
+    path: manifests/cert-manager
     directory:
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: metallb-system
+    namespace: cert-manager
   syncPolicy:
     automated:
       prune: true
