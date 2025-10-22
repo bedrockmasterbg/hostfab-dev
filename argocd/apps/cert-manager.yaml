@@ -9,7 +9,7 @@ metadata:
   annotations:
     env: home
 spec:
-  project: home
+  project: hostfab-dev
   sources:
   - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git 
     targetRevision: main
