@@ -9,7 +9,7 @@ metadata:
 spec:
   project: hostfab-dev
   source:
-    repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
+    repoURL: https://github.com/bedrockmasterbg/hostfab-dev.git
     path: argocd/apps
     targetRevision: main
     directory:
