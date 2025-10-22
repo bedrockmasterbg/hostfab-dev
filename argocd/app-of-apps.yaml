@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-apps
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: hostfab-dev
+  source:
+    repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
+    path: argocd/apps
+    targetRevision: main
+    directory:
+      recurse: true
+  destination:
+    server: https://87.243.107.94:6443
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: true
+    syncOptions:
+    - CreateNamespace=true
+    - Validate=true
+    - PrunePropagationPolicy=foreground
+    - PruneLast=true
