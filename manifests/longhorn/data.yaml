@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: auth-longhorn
+  namespace: longhorn
+  labels:
+    env: home
+    htpasswd: longhorn
+type: Opaque
+data:
+  auth: YWRtaW46JGFwcjEkMGh1NnEyNXQkVmZKcVpXODFaUXUvWXp2SFlYbnZOMQ==
