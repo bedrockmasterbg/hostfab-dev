@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: postgresql
+  name: mysql
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -15,14 +15,14 @@ spec:
     targetRevision: main
     ref: values
   - repoURL: https://percona.github.io/percona-helm-charts/
-    targetRevision: 2.7.0
-    chart: pg-operator
+    targetRevision: 0.12.0
+    chart: ps-operator
   - repoURL: https://percona.github.io/percona-helm-charts/
-    targetRevision: 2.7.0
-    chart: pg-db
+    targetRevision: 0.12.0
+    chart: ps-db
     helm:
       valueFiles:
-      - '$values/helm/postgresql/values.yaml'
+      - '$values/helm/mysql/values.yaml'
   destination:
     server: https://kubernetes.default.svc
     namespace: prestashop
