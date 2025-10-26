@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prestashop
+  name: postgresql
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -14,11 +14,15 @@ spec:
   - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
     targetRevision: main
     ref: values
-  # - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
-  #   targetRevision: main
-  #   path: manifests/prestashop
-  #   directory:
-  #     recurse: true
+  - repoURL: https://percona.github.io/percona-helm-charts/
+    targetRevision: 2.7.0
+    chart: pg-operator
+  - repoURL: https://percona.github.io/percona-helm-charts/
+    targetRevision: 2.7.0
+    chart: pg-db
+    helm:
+      valueFiles:
+      - '$values/helm/postgresql/values.yaml'
   destination:
     server: https://kubernetes.default.svc
     namespace: prestashop

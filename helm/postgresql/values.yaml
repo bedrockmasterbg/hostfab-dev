@@ -1,0 +1,28 @@
+image: perconalab/percona-postgresql-operator:main-ppg17-postgres
+postgresVersion: 17
+
+proxy:
+  pgBouncer:
+    replicas: 1
+    config:
+      global:
+        client_tls_sslmode: allow
+
+instances:
+- name: postgresql
+  replicas: 1
+  dataVolumeClaimSpec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+    annotations:
+      helm.sh/resource-policy: keep
+
+users:
+- name: prestashop
+  secretName: data-prestashop
+  databases:
+  - prestashop
+  options: "SUPERUSER"
