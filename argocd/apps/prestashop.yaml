@@ -14,11 +14,11 @@ spec:
   - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
     targetRevision: main
     ref: values
-  # - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
-  #   targetRevision: main
-  #   path: manifests/prestashop
-  #   directory:
-  #     recurse: true
+  - repoURL: git@github.com:bedrockmasterbg/hostfab-dev.git
+    targetRevision: main
+    path: manifests/prestashop
+    directory:
+      recurse: true
   destination:
     server: https://kubernetes.default.svc
     namespace: prestashop
