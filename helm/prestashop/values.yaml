@@ -12,7 +12,7 @@
 ## @param global.storageClass DEPRECATED: use global.defaultStorageClass instead
 ##
 global:
-  imageRegistry: ""
+  imageRegistry: "docker.io/bitnamilegacy"
   ## E.g.
   ## imagePullSecrets:
   ##   - myRegistryKeySecretName
