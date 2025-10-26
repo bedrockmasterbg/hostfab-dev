@@ -22,16 +22,16 @@ metadata:
   name: prestashop
   namespace: prestashop
   annotations:
-    cert-manager.io/cluster-issuer: hostfab-dev
+    # cert-manager.io/cluster-issuer: hostfab-dev
     kubernetes.io/ingress.class: nginx
   labels:
     app: prestashop
     env: home
 spec:
-  tls:
-  - hosts:
-    - store.hostfabtech.xyz
-    secretName: tls-store-hostfabtech-xyz
+  # tls:
+  # - hosts:
+  #   - store.hostfabtech.xyz
+  #   secretName: tls-store-hostfabtech-xyz
   rules:
   - host: store.hostfabtech.xyz
     http:
