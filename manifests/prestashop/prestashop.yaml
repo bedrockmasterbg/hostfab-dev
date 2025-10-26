@@ -29,7 +29,7 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: prestashop
-          mountPath: /var/www/html
+          mountPath: /var/www
         env:
         - name: DB_SERVER
           value: mysql-ps-db-mysql.prestashop.svc
