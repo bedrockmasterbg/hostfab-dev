@@ -32,22 +32,13 @@ spec:
           mountPath: /var/www/html
         env:
         - name: DB_SERVER
-          valueFrom:
-            secretKeyRef:
-              name: data-prestashop
-              key: pgbouncer-host
+          value: mysql-ps-db-mysql.prestashop.svc
         - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: data-prestashop
-              key: dbname
+          value: prestashop
         - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: data-prestashop
-              key: user
+          value: root
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: data-prestashop
-              key: password
+              name: mysql-ps-db-secrets
+              key: root
