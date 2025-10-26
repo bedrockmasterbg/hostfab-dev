@@ -11,6 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: auth-kubewall
     nginx.ingress.kubernetes.io/auth-realm: "Authentication Required by secops team"
+    kubernetess.io/ip-whitelist-source-range:  "87.243.107.94/32,"
   labels:
     app: kubewall
     env: home
