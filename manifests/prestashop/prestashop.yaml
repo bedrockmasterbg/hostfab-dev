@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prestashop
+  namespace: prestashop
+  labels:
+    app: prestashop
+    env: home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prestashop
+  template:
+    metadata:
+      labels:
+        app: prestashop
+        env: home
+    spec:
+      volumes:
+      - name: prestashop
+        persistentVolumeClaim:
+          claimName: prestashop
+      containers:
+      - name: prestashop
+        image: prestashop/prestashop:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: prestashop
+          mountPath: /var/www/html
+        env:
+        - name: DB_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: data-prestashop
+              key: pgbouncer-host
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: data-prestashop
+              key: dbname
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: data-prestashop
+              key: user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: data-prestashop
+              key: password
