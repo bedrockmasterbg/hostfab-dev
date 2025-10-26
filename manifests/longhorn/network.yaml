@@ -8,8 +8,8 @@ metadata:
     cert-manager.io/cluster-issuer: hostfab-dev
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/auth-type: basic
-    nginx.ingress.kubernetes.io/auth-secret: auth-longhorn
-    nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
+    #nginx.ingress.kubernetes.io/auth-secret: auth-longhorn
+   # nginx.ingress.kubernetes.io/auth-realm: "Authentication Required"
     kubernetess.io/ip-whitelist-source-range:  "87.243.107.94/32"
   labels:
     app: longhorn
